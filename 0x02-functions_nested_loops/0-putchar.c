@@ -1,9 +1,9 @@
 #include "main.h"
-/*
- * main - print _putchar
- * is written by afia
- * Return: Always 0 (Success)
- */
+/**
+* main - Entry point of the program
+* to print _putchar
+* Return: Always 0 (Success)
+*/
 int main(void)
 {
 _putchar('_');
@@ -14,6 +14,7 @@ _putchar('c');
 _putchar('h');
 _putchar('a');
 _putchar('r');
+_putchar('\n');
 return (0);
 }
 
