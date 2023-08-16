@@ -1,5 +1,5 @@
 # 0x03. C - Debugging #
-### Objective of this project is to; ###
-#### Understand what is means to debug ####
-#### Understand some methods of debugging mannually ####
-#### How to read the error messages ####
+### objective of this projects are; ###
+##### Understand debugging ####
+#### Understand some methods of debugging manually ####
+#### Know how to read error messages ####
