@@ -13,11 +13,7 @@ for (a = 0; a <= n; a++)
 for (b = 0; b <= n; b++)
 {
 c = b * a;
-if (b == 0)
-{
-_putchar(c + '0');
-}
-else
+if (b != 0)
 {
 _putchar(',');
 _putchar(' ');
@@ -25,20 +21,26 @@ if (c < 10)
 {
 _putchar(' ');
 _putchar(' ');
-_putchar(c + '0');
 }
 else if (c < 100)
 {
 _putchar(' ');
-_putchar((c / 10) + '0');
-_putchar((c % 10) + '0');
+}
+}
+if (c < 10)
+{
+_putchar ('0' + c);
+}
+else if (c < 100)
+{
+_putchar('0' + c / 10);
+_putchar('0' + c % 10);
 }
 else
 {
-_putchar((c / 100) + '0');
-_putchar((c / 10) + '0');
-_putchar((c % 10) + '0');
-}
+_putchar('0' + c / 10);
+_putchar('0' + (c / 10) % 10);
+_putchar('0' + c % 10);
 }
 }
 _putchar('\n');
