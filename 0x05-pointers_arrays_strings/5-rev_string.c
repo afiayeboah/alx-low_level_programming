@@ -12,7 +12,7 @@ char temp;
 for (length = 0; s[length] != '\0'; length++)
 ;
 a = 0;
-half = length / a;
+half = length / 2;
 while (half--)
 {
 	temp = s[length - a - 1];
