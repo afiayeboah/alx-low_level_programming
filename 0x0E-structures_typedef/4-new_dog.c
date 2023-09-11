@@ -2,15 +2,15 @@
 #include "dog.h"
 
 /**
- * _strlen - finds length of a string
+ * _strlen - function finds length of a string
  * @s: string to be evaluated
  * Return: the length of the string
  */
-int _strlen(char *str)
+int _strlen(char *s)
 {
 	int i = 0;
 
-	while (*str++)
+	while (*s++)
 		i++;
 
 	return (i);
@@ -40,7 +40,8 @@ char *_strcpy(char *dest, char *src)
  * @name: name of the dog
  * @age: age of the dog
  * @owner: owner of the dog
- * Return: pointer to the new dog (Success), NULL otherwise
+ * Return: pointer to the new dog (Success),
+ * otherwise, NULL
  */
 dog_t *new_dog(char *name, float age, char *owner)
 {
