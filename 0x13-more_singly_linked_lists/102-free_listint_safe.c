@@ -8,6 +8,7 @@
 size_t free_listint_safe(listint_t **h)
 {
 	size_t num_elements = 0;
+	int node_distance;
 	listint_t *temp_node;
 
 	if (!h || !*h)
@@ -15,12 +16,24 @@ size_t free_listint_safe(listint_t **h)
 
 	while (*h)
 	{
-		printf("[%p] %d\n", (void *)*h, (*h)->n);
+	node_distance = *h - (*h)->next;
+		if (node_distance > 0)
+		{
+
 		temp_node = (*h)->next;
 		free(*h);
-		*h = temp_node;
-		num_elements++;
+*h = temp_node;
+			num_elements++;
+		}
+		else
+		{
+			free(*h);
+			*h = NULL;
+			num_elements++;
+			break;
+		}
 	}
+
 
 	*h = NULL;
 
