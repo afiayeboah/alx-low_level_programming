@@ -13,7 +13,8 @@ int main(int argc, char *argv[])
 {
 	unsigned int i, multiplier;
 	size_t len, sum;
-	char *char_set = "A-CHRDw87lNS0E9B2TibgpnMVys5XzvtOGJcYLU+4mjW6fxqZeF3Qa1rPhdKIouk";
+	char *char_set =
+		"A-CHRDw87lNS0E9B2TibgpnMVys5XzvtOGJcYLU+4mjW6fxqZeF3Qa1rPhdKIouk";
 	char key[7] = "      ";
 
 	if (argc != 2)
@@ -39,20 +40,15 @@ int main(int argc, char *argv[])
 	for (multiplier = argv[1][0], i = 0; i < len; i++)
 		if ((char)multiplier <= argv[1][i])
 			multiplier = argv[1][i];
-
 	srand(multiplier ^ 14);
 	key[3] = char_set[rand() & 63];
 
 	for (multiplier = 0, i = 0; i < len; i++)
 		multiplier += argv[1][i] * argv[1][i];
-
 	key[4] = char_set[(multiplier ^ 239) & 63];
-
 	for (multiplier = 0, i = 0; (char)i < argv[1][0]; i++)
 		multiplier = rand();
-
 	key[5] = char_set[(multiplier ^ 229) & 63];
-
 	printf("%s\n", key);
 	return (0);
 }
