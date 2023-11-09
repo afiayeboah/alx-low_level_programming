@@ -1,79 +1,54 @@
 #include "lists.h"
 
 /**
- * delete_dnodeint_at_index - Deletes the node at a given index.
+ * delete_dnodeint_at_index - Deletes the node at a given index of a
+ * dlistint_t linked list.
+ *
  * @head: A pointer to the head of the list.
  * @index: The index of the node to be deleted. Index starts at 0.
  *
- * Return: 1 if the deletion succeeded, -1 if it failed.
+ * Return: 1 if it succeeded, -1 if it failed.
  */
 int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
 {
-	if (*head == NULL)
-		return (-1);
-
-	if (index == 0)
-		return (delete_first_node(head));
-
-	return (delete_node_at_index(head, index));
-}
-
-/**
- * delete_first_node - Deletes the first node of the list.
- * @head: A pointer to the head of the list.
- *
- * Return: 1 if the deletion succeeded, -1 if it failed.
- */
-int delete_first_node(dlistint_t **head)
-{
-	if ((*head)->next != NULL)
-	{
-		(*head)->next->prev = NULL;
-		*head = (*head)->next;
-	}
-	else
-	{
-		free(*head);
-		*head = NULL;
-	}
-
-	return (1);
-}
-
-/**
- * delete_node_at_index - Deletes a node at a specific index.
- * @head: A pointer to the head of the list.
- * @index: The index of the node to be deleted.
- *
- * Return: 1 if the deletion succeeded, -1 if it failed.
- */
-int delete_node_at_index(dlistint_t **head, unsigned int index)
-{
+	dlistint_t *current_node;
+	dlistint_t *previous_node;
 	unsigned int i;
-	dlistint_t *current = *head;
 
-	for (i = 0; i < index && current != NULL; i++)
-		current = current->next;
+	current_node = *head;
 
-	if (current == NULL)
-		return (-1);
+	if (current_node != NULL)
+		while (current_node->prev != NULL)
+			current_node = current_node->prev;
 
-	delete_node(current);
+	i = 0;
+	previous_node = NULL;
 
-	return (1);
-}
+	while (current_node != NULL)
+	{
+		if (i == index)
+		{
+			if (index == 0)
+			{
+				*head = current_node->next;
+				if (*head != NULL)
+					(*head)->prev = NULL;
+			}
+			else
+			{
+				previous_node->next = current_node->next;
 
-/**
- * delete_node - Deletes a given node.
- * @node: The node to be deleted.
- */
-void delete_node(dlistint_t *node)
-{
-	if (node->next != NULL)
-		node->next->prev = node->prev;
+				if (current_node->next != NULL)
+					current_node->next->prev = previous_node;
+			}
 
-	if (node->prev != NULL)
-		node->prev->next = node->next;
+			free(current_node);
+			return (1);
+		}
 
-	free(node);
+		previous_node = current_node;
+		current_node = current_node->next;
+		i++;
+	}
+	return (-1);
 }
