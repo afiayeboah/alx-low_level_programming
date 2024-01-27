@@ -1,0 +1,6 @@
+# Rule for building the executable 'school'
+all: main.c school.c
+	gcc main.c school.c -o school
+# Clean up the executable
+clean:
+	rm -f school
