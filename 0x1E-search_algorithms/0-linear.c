@@ -6,7 +6,7 @@
   * @size: The number of elements in the array.
   * @value: The value to search for.
   *
-  * Returns: The index of the first occurrence of the value if found,
+  * Return: The index of the first occurrence of the value if found,
   *          otherwise -1 if the value is not present or the array is NULL.
   *
   * Description: This function iterates through the array sequentially,
