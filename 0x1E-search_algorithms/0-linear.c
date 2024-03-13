@@ -9,9 +9,7 @@
   * Return: The index of the first occurrence of the value if found,
   *          otherwise -1 if the value is not present or the array is NULL.
   *
-  * Description: This function iterates through the array sequentially,
-  *              checking each element for the target value.
-  *              It prints the checked values during the search process.
+  * Description: Prints the checked values during the search process.
   */
 int linear_search(int *array, size_t size, int value)
 {
